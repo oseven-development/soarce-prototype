@@ -2,32 +2,53 @@ import React from 'react';
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
+import {MuiThemeProvider} from '@material-ui/core'
+import {theme} from './assets/theme/theme'
+import {Header, Navigation, SiteContainer, Snackbar} from './components'
+import routes from './assets/routes'
 
-
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 Amplify.configure(awsconfig);
 
+export const SnackbarContext = React.createContext({})
+export const SnackProvider = SnackbarContext.Provider
+export const SnackConsumer = SnackbarContext.Consumer
 
 const App: React.FC = () => {
+  const [title, setTitle] = React.useState('Recognize')
+  const [loading, setLoading] = React.useState(false)
+  const [snackbar, setSnackbar] = React.useState({variant: 'info', message: 'test', open: false})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<MuiThemeProvider theme={theme}>
+      <SnackProvider value={{snackbar, setSnackbar}}>
+      
+          <Router>
+            <Header  title={title} loading={loading} />
+            <Navigation setTitle={setTitle} width={window.innerWidth} />
+            <SiteContainer>
+              {routes.map((e: any) => {
+                const Component = e.component
+                return (
+                  <Route
+                    path={e.path}
+                    exact
+                    component={(props: any) => (
+                      <Component
+                        {...props}
+                        
+                      />
+                    )}
+                    key={e.path}
+                  />
+                )
+              })}
+            </SiteContainer>
+          </Router>
+      
+        <Snackbar />
+      </SnackProvider>
+    </MuiThemeProvider>
   );
 }
 const signUpConfig = {
@@ -42,15 +63,12 @@ const signUpConfig = {
       displayOrder: 3,
       type: 'string'
     },
-    {
-      label: 'Password',
-      key: 'password',
-      required: true,
+    {      label: 'Password',
+      key: 'password',      required: true,
       displayOrder: 2,
       type: 'password'
     },
- 
   ]
 };
 
-export default withAuthenticator(App,  { signUpConfig });
+export default withAuthenticator(App, { signUpConfig });
