@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"soarceprototypeb43d10b7": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}

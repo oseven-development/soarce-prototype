@@ -1,0 +1,17 @@
+{
+    "projectName": "soarce-prototype",
+    "version": "2.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "react-frontend/src",
+            "DistributionDir": "react-frontend/build",
+            "BuildCommand": "yarn build",
+            "StartCommand": "yarn start"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}
