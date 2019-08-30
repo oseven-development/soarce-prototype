@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "soarceprototypeb43d10b7_identitypool_b43d10b7",
+    "identityPoolName": "soarceprototypee073e8a0_identitypool_e073e8a0",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "soarceb43d10b7",
-    "userPoolName": "soarceprototypeb43d10b7_userpool_b43d10b7",
+    "resourceNameTruncated": "soarcee073e8a0",
+    "userPoolName": "soarceprototypee073e8a0_userpool_e073e8a0",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -17,7 +17,9 @@
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
-    "requiredAttributes": [],
+    "requiredAttributes": [
+        "phone_number"
+    ],
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
@@ -26,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "soarceb43d10b7_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "soarcee073e8a0_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "soarceprototypeb43d10b7",
+    "resourceName": "soarceprototypee073e8a0",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

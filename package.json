@@ -1,0 +1,13 @@
+{
+  "name": "soarce-prototype",
+  "version": "1.0.0",
+  "main": "react-frontend/src/index.ts",
+  "repository": "https://github.com/oseven-development/soarce-prototype",
+  "author": "Philipp Schmid",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "echo 'geht nicht'",
+    "start": "yarn  --cwd ./react-frontend start"
+  }
+}

@@ -1,18 +1,18 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "soarce-prototype-dev-20190830192110-authRole",
-            "UnauthRoleArn": "arn:aws:iam::891511646143:role/soarce-prototype-dev-20190830192110-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::891511646143:role/soarce-prototype-dev-20190830192110-authRole",
+            "AuthRoleName": "soarce-prototype-dev-20190830202714-authRole",
+            "UnauthRoleArn": "arn:aws:iam::891511646143:role/soarce-prototype-dev-20190830202714-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::891511646143:role/soarce-prototype-dev-20190830202714-authRole",
             "Region": "eu-central-1",
-            "DeploymentBucketName": "soarce-prototype-dev-20190830192110-deployment",
-            "UnauthRoleName": "soarce-prototype-dev-20190830192110-unauthRole",
-            "StackName": "soarce-prototype-dev-20190830192110",
-            "StackId": "arn:aws:cloudformation:eu-central-1:891511646143:stack/soarce-prototype-dev-20190830192110/8feea170-cb4a-11e9-afc6-02c3d40e0dd8"
+            "DeploymentBucketName": "soarce-prototype-dev-20190830202714-deployment",
+            "UnauthRoleName": "soarce-prototype-dev-20190830202714-unauthRole",
+            "StackName": "soarce-prototype-dev-20190830202714",
+            "StackId": "arn:aws:cloudformation:eu-central-1:891511646143:stack/soarce-prototype-dev-20190830202714/ca2fb8c0-cb53-11e9-8e6c-02998deedf64"
         },
         "categories": {
             "auth": {
-                "soarceprototypeb43d10b7": {}
+                "soarceprototypee073e8a0": {}
             }
         }
     }

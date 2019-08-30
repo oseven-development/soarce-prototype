@@ -1,0 +1,12 @@
+projects:
+  soarcePrototypeApi:
+    schemaPath: react-frontend/src/api/amplify/graphql/schema.json
+    includes:
+      - react-frontend/src/api/amplify/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: react-frontend/src/api/amplify/API.ts
+        docsFilePath: react-frontend/src/api/amplify/graphql
