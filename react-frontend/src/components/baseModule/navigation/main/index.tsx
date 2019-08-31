@@ -103,7 +103,7 @@ const _BottomNavigation = (props: IProps) => {
         }
       })}
       {window.innerWidth < 800 ? (
-        <React.Fragment>
+        <div>
           <BottomNavigationAction
             onClick={() => {
               setToggle(!toggle)
@@ -142,10 +142,8 @@ const _BottomNavigation = (props: IProps) => {
             anchor={'bottom'}
             style={{marginBottom: 55}}
           />
-        </React.Fragment>
-      ) : (
-        ''
-      )}
+        </div>
+      ) : null}
     </BottomNavigation>
   )
 }

@@ -5,6 +5,7 @@ import {Paper} from '../../../components'
 import FormikForm from '../../../components/formModule/formik'
 import * as Yup from 'yup' // for everything
 import {Typography} from '@material-ui/core'
+import StepperForm from '../../../components/formModule/forms/stepperFrom'
 
 const validationSchema = Yup.object({
   name: Yup.string('Enter a name').required('Name is required'),
@@ -18,10 +19,12 @@ const validationSchema = Yup.object({
     .required('Confirm your password')
     .oneOf([Yup.ref('password')], 'Password does not match'),
 })
+const stepperValues = ['Basic User-Information', 'Promoterdata']
 const values: any = [
-  {id: 'surname', label: 'Vorname', value: '', type: 'string', category: 'input', required: true},
-  {id: 'name', label: 'Name', value: '', type: 'string', category: 'input', required: true},
-  {id: 'email', label: 'Email', value: '', type: 'string', category: 'input', required: true},
+  {id: 'surname', label: 'Vorname', value: '', type: 'string', category: 'input', required: true, stepper: 1},
+  {id: 'name', label: 'Name', value: '', type: 'string', category: 'input', required: true, stepper: 1},
+  {id: 'email', label: 'Email', value: '', type: 'string', category: 'input', required: true, stepper: 1},
+
   {
     id: 'dateOfBirth',
     label: 'Geburtstag',
@@ -29,9 +32,10 @@ const values: any = [
     type: 'date',
     category: 'date',
     required: true,
+    stepper: 1,
   },
 
-  {id: 'age', label: 'Alter', value: '', type: 'number', category: 'input', required: true},
+  {id: 'age', label: 'Alter', value: '', type: 'number', category: 'input', required: true, stepper: 2},
   {
     id: 'promoter',
     label: 'Promoter auswählen',
@@ -51,6 +55,7 @@ const values: any = [
     ],
     category: 'select',
     required: true,
+    stepper: 2,
   },
 ]
 
@@ -63,6 +68,8 @@ const NewProject = (props: any) => {
           onSubmit={(values: any) => {
             console.log(values)
           }}
+          stepperValues={stepperValues}
+          type={'stepper'}
           formValues={values}
           validationSchema={{validationSchema}}
         />

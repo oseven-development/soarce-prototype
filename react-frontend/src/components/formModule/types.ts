@@ -9,7 +9,9 @@ export interface IFormElements {
   required?: boolean
   category?: 'input' | 'select' | 'date'
 }
-
+export interface IFormStepperElements extends IFormElements {
+  stepper: number
+}
 export interface IFormField {
   element: IFormElements
   errors: any

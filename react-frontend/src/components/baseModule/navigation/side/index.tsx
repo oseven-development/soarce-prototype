@@ -83,7 +83,7 @@ const SiteNavigation = (props: IProps) => {
         }
       })}
       {window.innerWidth < 800 && data.length > 1 ? (
-        <React.Fragment>
+        <div>
           <BottomNavigationAction
             onClick={() => {
               setToggle(!toggle)
@@ -119,10 +119,8 @@ const SiteNavigation = (props: IProps) => {
             anchor={'top'}
             style={{marginTop: 55}}
           />
-        </React.Fragment>
-      ) : (
-        ''
-      )}
+        </div>
+      ) : null}
     </BottomNavigation>
   )
 }
