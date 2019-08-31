@@ -1,12 +1,8 @@
 /** @format */
 
-import React from 'react'
-import {Paper} from '../../../components'
-import FormikForm from '../../../components/formModule/formik'
 import * as Yup from 'yup' // for everything
-import {Typography} from '@material-ui/core'
 
-const validationSchema = Yup.object({
+export const createLocationValidationSchema = Yup.object({
   name: Yup.string('Enter a name').required('Name is required'),
   email: Yup.string('Enter your email')
     .email('Enter a valid email')
@@ -18,12 +14,10 @@ const validationSchema = Yup.object({
     .required('Confirm your password')
     .oneOf([Yup.ref('password')], 'Password does not match'),
 })
-const stepperValues = ['Basic User-Information', 'Promoterdata']
-const values: any = [
+export const locationValues: any = [
   {id: 'surname', label: 'Vorname', value: '', type: 'string', category: 'input', required: true, stepper: 1},
   {id: 'name', label: 'Name', value: '', type: 'string', category: 'input', required: true, stepper: 1},
   {id: 'email', label: 'Email', value: '', type: 'string', category: 'input', required: true, stepper: 1},
-
   {
     id: 'dateOfBirth',
     label: 'Geburtstag',
@@ -57,23 +51,3 @@ const values: any = [
     stepper: 2,
   },
 ]
-
-const NewProject = (props: any) => {
-  return (
-    <React.Fragment>
-      <Paper>
-        <Typography variant="h1">Projekt hinzufügen</Typography>
-        <FormikForm
-          onSubmit={(values: any) => {
-            console.log(values)
-          }}
-          stepperValues={stepperValues}
-          type={'stepper'}
-          formValues={values}
-          validationSchema={{validationSchema}}
-        />
-      </Paper>
-    </React.Fragment>
-  )
-}
-export default NewProject

@@ -2,10 +2,11 @@
 
 import React from 'react'
 
-import {DashboardView, ProjectView, CalendarView} from '../../view'
+import {DashboardView, ProjectView, CalendarView, LocationView} from '../../view'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import ProjectIcon from '@material-ui/icons/EventNote'
 import CalendarIcon from '@material-ui/icons/CalendarToday'
+import LocationIcon from '@material-ui/icons/Business'
 
 export interface IRoute {
   path: string
@@ -45,6 +46,15 @@ const routes: IRoute[] = [
     position: 3,
     bottomNavigation: true,
     icon: <CalendarIcon />,
+  },
+  {
+    path: '/location',
+    component: LocationView,
+    groups: '',
+    displayName: 'Location',
+    position: 3,
+    bottomNavigation: true,
+    icon: <LocationIcon />,
   },
 ]
 

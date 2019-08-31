@@ -8,6 +8,8 @@
   "private": false,
   "scripts": {
     "build": "echo 'geht nicht'",
-    "start": "yarn  --cwd ./react-frontend start"
-  }
+    "start": "yarn  --cwd ./react-frontend start",
+    "graphiql": "yarn  --cwd ./graphiql start"
+  },
+  "devDependencies": {}
 }
