@@ -19,10 +19,30 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref('password')], 'Password does not match'),
 })
 const values: any = [
-  {id: 'surname', label: 'Vorname', value: '', type: 'string', category: 'input'},
-  {id: 'name', label: 'Name', value: '', type: 'string', category: 'input'},
-  {id: 'email', label: 'Email', value: '', type: 'string', category: 'input'},
-  {id: 'age', label: 'Alter', value: '', type: 'number', category: 'input'},
+  {id: 'surname', label: 'Vorname', value: '', type: 'string', category: 'input', required: true},
+  {id: 'name', label: 'Name', value: '', type: 'string', category: 'input', required: true},
+  {id: 'email', label: 'Email', value: '', type: 'string', category: 'input', required: true},
+  {id: 'age', label: 'Alter', value: '', type: 'number', category: 'input', required: true},
+  {
+    id: 'promoter',
+    label: 'Promoter auswählen',
+    values: [
+      {
+        label: 'Max',
+        value: 'id-1234',
+      },
+      {
+        label: 'Philipp',
+        value: 'id-12345',
+      },
+      {
+        label: 'Sarah',
+        value: 'id-4321',
+      },
+    ],
+    category: 'select',
+    required: true,
+  },
 ]
 
 const NewProject = (props: any) => {
