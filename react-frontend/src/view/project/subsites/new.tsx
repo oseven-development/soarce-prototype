@@ -22,6 +22,15 @@ const values: any = [
   {id: 'surname', label: 'Vorname', value: '', type: 'string', category: 'input', required: true},
   {id: 'name', label: 'Name', value: '', type: 'string', category: 'input', required: true},
   {id: 'email', label: 'Email', value: '', type: 'string', category: 'input', required: true},
+  {
+    id: 'dateOfBirth',
+    label: 'Geburtstag',
+    value: new Date().toLocaleDateString(),
+    type: 'date',
+    category: 'date',
+    required: true,
+  },
+
   {id: 'age', label: 'Alter', value: '', type: 'number', category: 'input', required: true},
   {
     id: 'promoter',
