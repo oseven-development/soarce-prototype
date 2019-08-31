@@ -31,6 +31,7 @@ const defaultTheme = {
       fontSize: '0.98rem',
     },
   },
+  spacing: 4,
 }
 
 export const theme = createMuiTheme({

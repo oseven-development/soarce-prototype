@@ -79,7 +79,7 @@ const _BottomNavigation = (props: IProps) => {
     <BottomNavigation
       value={value}
       // onChange={handleChange}
-      style={{boxShadow: value !== 'Produktion' ? '0px 1px 3px #ccc' : ''}}
+      style={{boxShadow: value !== 'Projekte' ? '0px 1px 3px #ccc' : ''}}
       className={width > 800 ? desktopClasses.root : classes.root}>
       {NavigationItems.map((e: any) => {
         if (e.displayName && e.position && e.position < Limit) {

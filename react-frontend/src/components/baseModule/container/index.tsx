@@ -6,7 +6,11 @@ import {Flex} from 'rebass'
 const SiteContainer = (props: any) => {
   const {children} = props
   return (
-    <Flex flexWrap="wrap" style={{margin: '95px 15px 70px 15px'}} justifyContent={'center'} alignItems={'flex-start'}>
+    <Flex
+      flexWrap="wrap"
+      style={{margin: window.innerWidth < 768 ? '56px 0px 55px 0px' : '120px auto'}}
+      justifyContent={'center'}
+      alignItems={'flex-start'}>
       {children}
     </Flex>
   )

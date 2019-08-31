@@ -1,6 +1,7 @@
 /** @format */
 
 import DashboardView from './dashboard'
+import ProjectView from './project'
+import CalendarView from './calendar'
 
-
-export {DashboardView}
+export {DashboardView, ProjectView, CalendarView}

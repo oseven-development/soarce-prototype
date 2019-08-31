@@ -1,8 +1,8 @@
 /** @format */
 
 export const color = {
-  primary: '#8992F8',
-  secondary: '#434893',
+  primary: '#013354',
+  secondary: '#F2AB1F',
   success: '#0AB464',
   error: '#CC4742',
   background: '#f0f0f0',

@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-import {DashboardView} from '../../view'
-import SettingsIcon from '@material-ui/icons/Settings'
-import HistoryIcon from '@material-ui/icons/History'
-import CameraIcon from '@material-ui/icons/AddCircle'
+import {DashboardView, ProjectView, CalendarView} from '../../view'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import ProjectIcon from '@material-ui/icons/EventNote'
+import CalendarIcon from '@material-ui/icons/CalendarToday'
 
 export interface IRoute {
   path: string
@@ -23,29 +23,29 @@ const routes: IRoute[] = [
     path: '/',
     component: DashboardView,
     groups: '',
-    displayName: 'Recognize',
+    displayName: 'Dashboard',
     position: 1,
     bottomNavigation: true,
-    icon: <CameraIcon />,
+    icon: <DashboardIcon />,
   },
-  // {
-  //   path: '/project',
-  //   component: HistoryView,
-  //   groups: '',
-  //   displayName: 'Historie',
-  //   position: 2,
-  //   bottomNavigation: true,
-  //   icon: <HistoryIcon />,
-  // },
-  // {
-  //   path: '/user',
-  //   component: SettingsView,
-  //   groups: '',
-  //   displayName: 'Einstellungen',
-  //   position: 3,
-  //   bottomNavigation: true,
-  //   icon: <SettingsIcon />,
-  // },
+  {
+    path: '/project',
+    component: ProjectView,
+    groups: '',
+    displayName: 'Projekte',
+    position: 2,
+    bottomNavigation: true,
+    icon: <ProjectIcon />,
+  },
+  {
+    path: '/calendar',
+    component: CalendarView,
+    groups: '',
+    displayName: 'Kalender',
+    position: 3,
+    bottomNavigation: true,
+    icon: <CalendarIcon />,
+  },
 ]
 
 export default routes

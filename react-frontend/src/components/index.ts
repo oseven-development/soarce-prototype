@@ -5,11 +5,14 @@ import Paper from './baseModule/paper'
 import Snackbar from './baseModule/snackbar'
 import Input from './baseModule/textfield'
 import Card from './baseModule/card'
+import FabButton from './baseModule/button/fab'
+import NormalButton from './baseModule/button/normal'
 import Navigation from './baseModule/navigation/main'
 import SiteNavigation from './baseModule/navigation/side'
 import Drawer from './baseModule/drawer/index'
 import SiteContainer from './baseModule/container'
 export {
+  FabButton,
   Drawer,
   Header,
   Card,
@@ -19,4 +22,5 @@ export {
   SiteContainer,
   Paper,
   Snackbar,
+  NormalButton,
 }
