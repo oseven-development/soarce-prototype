@@ -24,9 +24,17 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const _NativeSelect = (props: ISelect) => {
-  const {errors, required, variant, id, label, values, onChange} = props
+const _NativeSelect = (props: any) => {
   const classes = useStyles()
+  const {errors, required, variant, id, label, values, onChange} = props
+  const [asyncValues, setAsyncValues] = React.useState([])
+  React.useEffect(() => {
+    const LoadData = async () => {
+      const res = await values()
+      setAsyncValues(res)
+    }
+    LoadData()
+  }, [])
   return (
     <FormControl
       className={classes.formControl}
@@ -39,11 +47,17 @@ const _NativeSelect = (props: ISelect) => {
         onChange={onChange.bind(null, id)}
         input={<OutlinedInput name={id} labelWidth={label.length * 9} id={`${id}-native-select`} />}>
         <option value="" />
-        {values.map(({value, label}: any) => (
-          <option key={label} value={value}>
-            {label}
-          </option>
-        ))}
+        {typeof values === 'function'
+          ? asyncValues.map(({value, label}: any) => (
+              <option key={label} value={value}>
+                {label}
+              </option>
+            ))
+          : values.map(({value, label}: any) => (
+              <option key={label} value={value}>
+                {label}
+              </option>
+            ))}
       </NativeSelect>
 
       <FormHelperText>{errors ? errors[id] : null}</FormHelperText>

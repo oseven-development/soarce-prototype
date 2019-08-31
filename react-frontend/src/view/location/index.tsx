@@ -7,7 +7,6 @@ import {API, graphqlOperation} from 'aws-amplify'
 
 import {createLocationValidationSchema, locationValues} from '../../assets/content/forms/location'
 import * as mutations from '../../api/amplify/graphql/mutations'
-import * as queries from '../../api/amplify/graphql/queries'
 import {createFormValues} from '../../utils/createFormValues'
 
 const LocationView = (props: any) => {

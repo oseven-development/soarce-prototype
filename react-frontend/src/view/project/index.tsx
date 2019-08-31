@@ -1,57 +1,114 @@
 /** @format */
-
 import React from 'react'
-import {SiteNavigation, Bigbutton} from '../../components'
+import {Bigbutton, CForm, Card, ContentCard} from '../../components'
 import AddIcon from '@material-ui/icons/Add'
-import NewProject from './subsites/new'
+import {API, graphqlOperation} from 'aws-amplify'
 
-const project = {
-  id: 123,
-  description: 'test',
-  startDate: '01-01-2019',
-  endDate: '02-02-2019',
-  Promoter: [{name: 'Max', email: 'Max@email.de'}, {name: 'Philipp', email: 'Philipp@email.de'}],
-  location: {
-    id: 456,
-    name: 'Munich Festhalle',
-    city: 'Munich',
-  },
-}
+import {ProjectValidationSchema, projectValues} from '../../assets/content/forms/project'
+import * as mutations from '../../api/amplify/graphql/mutations'
+import {createFormValues} from '../../utils/createFormValues'
+
+const renameProp = (oldProp: string, newProp: string, {[oldProp]: old, ...others}: any) => ({
+  [newProp]: old,
+  ...others,
+})
 
 const ProjectView = (props: any) => {
-  const [subsite, setSubsite]: [string, any] = React.useState('Dashboard')
-  const [projects, setProjects] = React.useState(project)
+  const {setSnackbar} = props
+  const [action, setAction]: [string, any] = React.useState('default')
+  const [projects, setProjects]: any = React.useState(props.data.projects)
+  const [projectID, setProjectID] = React.useState(0)
+  const createProject = async (values: any) => {
+    const _values = renameProp('location', 'projectLocationId', values)
+    await API.graphql(graphqlOperation(mutations.createProject, {input: _values}))
+      .then((res: any) => {
+        setSnackbar({variant: 'success', message: 'Project erfolgreich erstellt', open: true})
+      })
+      .catch((err: any) => {
+        setSnackbar({variant: 'error', message: err.errors[0].message, open: true})
+      })
+  }
+  const editProject = async (values: any) => {
+    await API.graphql(graphqlOperation(mutations.updateProject, {input: values}))
+      .then(async ({data}: any) => {
+        projects.splice(projects.findIndex((e: any) => e.id === data.updateProject.id), 1, data.updateProject)
+        setProjects(projects)
+        setSnackbar({variant: 'success', message: 'Projekt erfolgreich upgedatet', open: true})
+      })
+      .catch((err: any) => {
+        console.log(err)
+        if (err.errors) {
+          setSnackbar({variant: 'error', message: err.errors[0].message, open: true})
+        }
+      })
+  }
+  const deleteProject = async (values: any) => {
+    await API.graphql(graphqlOperation(mutations.deleteProject, {input: {id: values.id}}))
+      .then((res: any) => {
+        projects.splice(projects.indexOf(values), 1)
+        setProjects(projects)
+        setSnackbar({variant: 'success', message: 'Projekt erfolgreich gelöscht', open: true})
+      })
+      .catch((err: any) => {
+        setSnackbar({variant: 'error', message: err.errors[0].message, open: true})
+      })
+  }
+
   return (
     <React.Fragment>
-      <SiteNavigation
-        startValue={'Dashboard'}
-        data={['Dashboard', 'hinzufügen', 'bearbeiten']}
-        onClick={setSubsite}
-        Limit={4}
-      />
-      {subsite === 'Dashboard' ? (
+      {action === 'hinzufügen' ? (
+        <CForm
+          title={`Projekt ${action}`}
+          onSubmit={createProject}
+          validationSchema={ProjectValidationSchema}
+          values={projectValues}
+          stepperValues={['Stammdaten des Projektes', 'Promoter & Location']}
+        />
+      ) : action === 'editieren' ? (
+        <CForm
+          title={`Projekt ${action}`}
+          onSubmit={editProject}
+          validationSchema={ProjectValidationSchema}
+          stepperValues={['Stammdaten des Projektes', 'Promoter & Location']}
+          values={createFormValues(projectValues, projects[projectID])}
+        />
+      ) : (
         <Bigbutton
           text={'Projekt hinzufügen'}
           icon={<AddIcon />}
           width={350}
+          height={100}
           onClick={() => {
-            setSubsite('hinzufügen')
+            setAction('hinzufügen')
           }}
         />
-      ) : null}
+      )}
+      {projects &&
+        projects.map((project: any) => {
+          console.log(project)
+          //   return (
+          //   <Card
+          //     key={project.name}
+          //     content={
+          //       <ContentCard
+          //         title={`Location: ${location.name}`}
+          //         type="location"
+          //         onEdit={() => {
+          //           setAction('editieren')
+          //           setLocationID(locations.indexOf(location))
+          //         }}
+          //         onDelete={() => {
+          //           deleteLocation(location)
+          //         }}
+          //         content={location}
+          //       />
+          //     }></Card>
+          // )
+        })}
 
-      <SubSite site={subsite} />
+      {/* <SubSite site={subsite} /> */}
     </React.Fragment>
   )
-}
-
-const SubSite = ({site}: {site: string}) => {
-  switch (site) {
-    case 'hinzufügen':
-      return <NewProject />
-    default:
-      return null
-  }
 }
 
 export default ProjectView
