@@ -9,15 +9,8 @@ export const onCreateProject = `subscription OnCreateProject {
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name
@@ -34,15 +27,8 @@ export const onUpdateProject = `subscription OnUpdateProject {
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name
@@ -59,15 +45,8 @@ export const onDeleteProject = `subscription OnDeleteProject {
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name

@@ -9,15 +9,8 @@ export const getProject = `query GetProject($id: ID!) {
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name
@@ -39,9 +32,8 @@ export const listProjects = `query ListProjects(
       startDate
       endDate
       state
-      promoter {
-        nextToken
-      }
+      budget
+      promoter
       location {
         id
         name

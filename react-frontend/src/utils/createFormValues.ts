@@ -9,3 +9,5 @@ export const createFormValues = (formValues: any, values: Object) => {
       return {...formValues[formValues.map((e: any) => e.id).indexOf(obj.id)], ...obj}
     })
 }
+
+export const varToString = (varObj: any) => Object.keys(varObj)[0]

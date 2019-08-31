@@ -36,6 +36,7 @@ export const projectValues = [
     required: true,
     stepper: 1,
   },
+  {id: 'budget', label: 'Budget', value: '', type: 'number', category: 'input', required: true, stepper: 1},
   {
     id: 'location',
     label: 'Location auswählen',

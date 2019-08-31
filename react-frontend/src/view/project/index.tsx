@@ -18,10 +18,14 @@ const ProjectView = (props: any) => {
   const [action, setAction]: [string, any] = React.useState('default')
   const [projects, setProjects]: any = React.useState(props.data.projects)
   const [projectID, setProjectID] = React.useState(0)
+
   const createProject = async (values: any) => {
     const _values = renameProp('location', 'projectLocationId', values)
-    await API.graphql(graphqlOperation(mutations.createProject, {input: _values}))
+    await API.graphql(
+      graphqlOperation(mutations.createProject, {input: {..._values, state: 'pending', promoter: [_values.promoter]}}),
+    )
       .then((res: any) => {
+        setProjects([...projects, res.data.createProject])
         setSnackbar({variant: 'success', message: 'Project erfolgreich erstellt', open: true})
       })
       .catch((err: any) => {
@@ -77,7 +81,7 @@ const ProjectView = (props: any) => {
           text={'Projekt hinzufügen'}
           icon={<AddIcon />}
           width={350}
-          height={100}
+          height={240}
           onClick={() => {
             setAction('hinzufügen')
           }}
@@ -85,25 +89,25 @@ const ProjectView = (props: any) => {
       )}
       {projects &&
         projects.map((project: any) => {
-          console.log(project)
-          //   return (
-          //   <Card
-          //     key={project.name}
-          //     content={
-          //       <ContentCard
-          //         title={`Location: ${location.name}`}
-          //         type="location"
-          //         onEdit={() => {
-          //           setAction('editieren')
-          //           setLocationID(locations.indexOf(location))
-          //         }}
-          //         onDelete={() => {
-          //           deleteLocation(location)
-          //         }}
-          //         content={location}
-          //       />
-          //     }></Card>
-          // )
+          return (
+            <Card
+              key={project.name}
+              height={240}
+              content={
+                <ContentCard
+                  title={`Projekt: ${project.name}`}
+                  type="project"
+                  onEdit={() => {
+                    setAction('editieren')
+                    setProjectID(projects.indexOf(project))
+                  }}
+                  onDelete={() => {
+                    deleteProject(project)
+                  }}
+                  content={project}
+                />
+              }></Card>
+          )
         })}
 
       {/* <SubSite site={subsite} /> */}

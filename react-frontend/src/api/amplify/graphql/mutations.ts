@@ -9,15 +9,8 @@ export const createProject = `mutation CreateProject($input: CreateProjectInput!
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name
@@ -34,15 +27,8 @@ export const updateProject = `mutation UpdateProject($input: UpdateProjectInput!
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name
@@ -59,15 +45,8 @@ export const deleteProject = `mutation DeleteProject($input: DeleteProjectInput!
     startDate
     endDate
     state
-    promoter {
-      items {
-        id
-        name
-        email
-        phoneNumber
-      }
-      nextToken
-    }
+    budget
+    promoter
     location {
       id
       name

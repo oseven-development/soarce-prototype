@@ -8,6 +8,8 @@ export type CreateProjectInput = {
   startDate: string,
   endDate: string,
   state?: string | null,
+  budget: number,
+  promoter?: Array< string | null > | null,
   projectLocationId: string,
 };
 
@@ -18,6 +20,8 @@ export type UpdateProjectInput = {
   startDate?: string | null,
   endDate?: string | null,
   state?: string | null,
+  budget?: number | null,
+  promoter?: Array< string | null > | null,
   projectLocationId?: string | null,
 };
 
@@ -30,7 +34,6 @@ export type CreatePromoterInput = {
   name: string,
   email: string,
   phoneNumber: string,
-  projectPromoterId?: string | null,
 };
 
 export type UpdatePromoterInput = {
@@ -38,7 +41,6 @@ export type UpdatePromoterInput = {
   name?: string | null,
   email?: string | null,
   phoneNumber?: string | null,
-  projectPromoterId?: string | null,
 };
 
 export type DeletePromoterInput = {
@@ -68,6 +70,8 @@ export type ModelProjectFilterInput = {
   startDate?: ModelStringFilterInput | null,
   endDate?: ModelStringFilterInput | null,
   state?: ModelStringFilterInput | null,
+  budget?: ModelFloatFilterInput | null,
+  promoter?: ModelStringFilterInput | null,
   and?: Array< ModelProjectFilterInput | null > | null,
   or?: Array< ModelProjectFilterInput | null > | null,
   not?: ModelProjectFilterInput | null,
@@ -97,6 +101,18 @@ export type ModelStringFilterInput = {
   notContains?: string | null,
   between?: Array< string | null > | null,
   beginsWith?: string | null,
+};
+
+export type ModelFloatFilterInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  contains?: number | null,
+  notContains?: number | null,
+  between?: Array< number | null > | null,
 };
 
 export type ModelPromoterFilterInput = {
@@ -131,17 +147,8 @@ export type CreateProjectMutation = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,
@@ -164,17 +171,8 @@ export type UpdateProjectMutation = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,
@@ -197,17 +195,8 @@ export type DeleteProjectMutation = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,
@@ -311,17 +300,8 @@ export type GetProjectQuery = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,
@@ -348,10 +328,8 @@ export type ListProjectsQuery = {
       startDate: string,
       endDate: string,
       state: string | null,
-      promoter:  {
-        __typename: "ModelPromoterConnection",
-        nextToken: string | null,
-      } | null,
+      budget: number,
+      promoter: Array< string | null > | null,
       location:  {
         __typename: "Location",
         id: string,
@@ -438,17 +416,8 @@ export type OnCreateProjectSubscription = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,
@@ -467,17 +436,8 @@ export type OnUpdateProjectSubscription = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,
@@ -496,17 +456,8 @@ export type OnDeleteProjectSubscription = {
     startDate: string,
     endDate: string,
     state: string | null,
-    promoter:  {
-      __typename: "ModelPromoterConnection",
-      items:  Array< {
-        __typename: "Promoter",
-        id: string,
-        name: string,
-        email: string,
-        phoneNumber: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
+    budget: number,
+    promoter: Array< string | null > | null,
     location:  {
       __typename: "Location",
       id: string,

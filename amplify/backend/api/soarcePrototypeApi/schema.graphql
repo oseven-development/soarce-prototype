@@ -8,7 +8,7 @@ type Project @model {
   endDate: String!
   state: String
   budget: Float!
-  promoter: [Promoter]!
+  promoter: [String]
   location: Location! @connection
 }
 
