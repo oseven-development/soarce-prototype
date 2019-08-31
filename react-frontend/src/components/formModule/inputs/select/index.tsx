@@ -32,27 +32,12 @@ interface ISelect {
   id: string
   label: string
   values: Object[]
+  onChange: Function
 }
 
 const _NativeSelect = (props: ISelect) => {
-  const {errors, required, variant, id, label, values} = props
+  const {errors, required, variant, id, label, values, onChange} = props
   const classes = useStyles()
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  })
-
-  const inputLabel = React.useRef(null)
-  const [labelWidth, setLabelWidth] = React.useState(0)
-
-  const handleChange = (name: any) => (event: any) => {
-    setState({
-      ...state,
-      [name]: event.target.value,
-    })
-  }
-  //   id: 'age-native-required',
-  //   id="name-native-error"
   return (
     <FormControl
       className={classes.formControl}
@@ -61,19 +46,17 @@ const _NativeSelect = (props: ISelect) => {
       required={required ? required : false}
       error={Boolean(errors[id]) ? true : false}>
       <InputLabel htmlFor={`${id}-native-select`}>{label}</InputLabel>
-      <Select
-        native
-        value={state.age}
-        onChange={handleChange(id)}
-        inputProps={{
-          name: id,
-        }}
+      <NativeSelect
+        onChange={onChange.bind(null, id)}
         input={<OutlinedInput name={id} labelWidth={label.length * 9} id={`${id}-native-select`} />}>
         <option value="" />
         {values.map(({value, label}: any) => (
-          <option value={value}>{label}</option>
+          <option key={label} value={value}>
+            {label}
+          </option>
         ))}
-      </Select>
+      </NativeSelect>
+
       <FormHelperText>{errors ? errors[id] : null}</FormHelperText>
     </FormControl>
   )

@@ -64,6 +64,7 @@ const _Formfield = (props: IFormField) => {
           id={element.id}
           label={element.label}
           values={element.values}
+          onChange={change}
           required={element.required ? element.required : false}
         />
       )

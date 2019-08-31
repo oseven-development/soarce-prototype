@@ -10,10 +10,6 @@ interface IFormik {
   onSumbit: Function
 }
 
-const submitValues = (test: any) => {
-  console.log(test)
-}
-
 const FormikForm = (props: any) => {
   const {classes, formValues, validationSchema, onSubmit} = props
   const values = Object.assign({}, ...formValues.map((e: any) => ({[e.id]: e.value})))
