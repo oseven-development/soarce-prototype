@@ -9,10 +9,11 @@ import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Typography from '@material-ui/core/Typography'
+import FormContainer from '../layout/halfHalfForm'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '90%',
+    width: '100%',
   },
   button: {
     marginRight: theme.spacing(1),
@@ -88,12 +89,12 @@ const StepperForm = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep}>
+      <Stepper activeStep={activeStep} style={{marginTop: 8}}>
         {stepperValues.map((label: string, index: number) => {
           const stepProps: any = {}
           const labelProps: any = {}
           if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>
+            labelProps.optional = <Typography variant="subtitle2">Optional</Typography>
           }
           if (isStepSkipped(index)) {
             stepProps.completed = false
@@ -113,27 +114,29 @@ const StepperForm = (props: any) => {
           e.stopPropagation()
           handleSubmit()
         }}>
-        {formValues
-          ? formValues.map((element: IFormStepperElements) =>
-              element.stepper - 1 === activeStep ? (
-                <FormField
-                  key={element.id}
-                  element={element}
-                  errors={errors}
-                  touched={touched}
-                  values={values}
-                  change={change}
-                />
-              ) : null,
-            )
-          : null}
+        <FormContainer>
+          {formValues
+            ? formValues.map((element: IFormStepperElements) =>
+                element.stepper - 1 === activeStep ? (
+                  <FormField
+                    key={element.id}
+                    element={element}
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    change={change}
+                  />
+                ) : null,
+              )
+            : null}
+        </FormContainer>
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
           {activeStep === stepperValues.length - 1 ? (
             <React.Fragment>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
-              <Button onClick={handleReset} className={classes.button}>
+              <Button onClick={handleReset} color={'secondary'} className={classes.button}>
                 Reset
               </Button>
               <Button type="submit" variant="contained" color="primary" disabled={!isValid}>

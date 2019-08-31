@@ -6,6 +6,7 @@ import Snackbar from './baseModule/snackbar'
 import Input from './baseModule/textfield'
 import Card from './baseModule/card'
 import FabButton from './baseModule/button/fab'
+import Bigbutton from './baseModule/button/big'
 import NormalButton from './baseModule/button/normal'
 import Navigation from './baseModule/navigation/main'
 import SiteNavigation from './baseModule/navigation/side'
@@ -23,4 +24,5 @@ export {
   Paper,
   Snackbar,
   NormalButton,
+  Bigbutton,
 }

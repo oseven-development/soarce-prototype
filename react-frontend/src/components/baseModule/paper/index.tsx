@@ -7,14 +7,13 @@ import Paper from '@material-ui/core/Paper'
 const useStyles = makeStyles((theme: any) => ({
   root: {
     width: '100%',
-    maxWidth: 400,
-    marginBottom: 10,
+    maxWidth: 900,
     borderRadius: 20,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     padding: 18,
-    margin: '10px 0px',
+    margin: '10px',
   },
 }))
 
