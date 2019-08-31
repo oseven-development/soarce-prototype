@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: any) => ({
 }))
 
 const Bigbutton = (props: any) => {
-  const {icon, text, onClick, width} = props
+  const {icon, text, onClick, width, height} = props
   const classes = useStyles()
 
   return (
@@ -24,11 +24,14 @@ const Bigbutton = (props: any) => {
       className={classes.root}
       fullWidth={window.innerWidth < 640 ? true : false}
       onClick={onClick}>
-      <Paper height={'15vh'}>
+      <Paper height={height ? height : '15vh'}>
         <Flex
           justifyContent={'center'}
           alignItems={'center'}
-          style={{width: width ? (window.innerWidth < 640 ? '100%' : width) : '100%', height: '100%'}}>
+          style={{
+            width: width ? (window.innerWidth < 640 ? '100%' : width) : '100%',
+            height: '100%',
+          }}>
           <Box style={{display: 'flex', justifyContent: 'center'}}>{icon}</Box>
           <Box>
             <Typography variant="h2">{text}</Typography>

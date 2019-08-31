@@ -1,38 +1,106 @@
 /** @format */
 
 import React from 'react'
-import {Bigbutton} from '../../components'
+import {Bigbutton, CForm, Card, ContentCard} from '../../components'
 import AddIcon from '@material-ui/icons/Add'
+import {API, graphqlOperation} from 'aws-amplify'
+
+import {createLocationValidationSchema, locationValues} from '../../assets/content/forms/location'
+import * as mutations from '../../api/amplify/graphql/mutations'
+import * as queries from '../../api/amplify/graphql/queries'
+import {createFormValues} from '../../utils/createFormValues'
 
 const LocationView = (props: any) => {
-  const [subsite, setSubsite]: [string, any] = React.useState('Dashboard')
-  const [locations, setLocations] = React.useState({})
-  console.log(subsite)
+  const {setSnackbar} = props
+  const [action, setAction]: [string, any] = React.useState('default')
+  const [locations, setLocations]: any = React.useState(props.data.locations)
+  const [locationID, setLocationID] = React.useState(0)
+
+  const createLocation = async (values: any) => {
+    await API.graphql(graphqlOperation(mutations.createLocation, {input: values}))
+      .then((res: any) => {
+        setSnackbar({variant: 'success', message: 'Location erfolgreich erstellt', open: true})
+      })
+      .catch((err: any) => {
+        setSnackbar({variant: 'error', message: err.errors[0].message, open: true})
+      })
+  }
+  const editLocation = async (values: any) => {
+    await API.graphql(graphqlOperation(mutations.updateLocation, {input: values}))
+      .then(async ({data}: any) => {
+        locations.splice(locations.findIndex((e: any) => e.id === data.updateLocation.id), 1, data.updateLocation)
+        setLocations(locations)
+        setSnackbar({variant: 'success', message: 'Location erfolgreich upgedatet', open: true})
+      })
+      .catch((err: any) => {
+        console.log(err)
+        if (err.errors) {
+          setSnackbar({variant: 'error', message: err.errors[0].message, open: true})
+        }
+      })
+  }
+  const deleteLocation = async (values: any) => {
+    await API.graphql(graphqlOperation(mutations.deleteLocation, {input: {id: values.id}}))
+      .then((res: any) => {
+        locations.splice(locations.indexOf(values), 1)
+        setLocations(locations)
+        setSnackbar({variant: 'success', message: 'Location erfolgreich gelöscht', open: true})
+      })
+      .catch((err: any) => {
+        setSnackbar({variant: 'error', message: err.errors[0].message, open: true})
+      })
+  }
+
   return (
     <React.Fragment>
-      {subsite !== 'hinzufügen' ? (
+      {action === 'hinzufügen' ? (
+        <CForm
+          title={`Location ${action}`}
+          onSubmit={createLocation}
+          validationSchema={createLocationValidationSchema}
+          values={locationValues}
+        />
+      ) : action === 'editieren' ? (
+        <CForm
+          title={`Location ${action}`}
+          onSubmit={editLocation}
+          validationSchema={createLocationValidationSchema}
+          values={createFormValues(locationValues, locations[locationID])}
+        />
+      ) : (
         <Bigbutton
           text={'Location hinzufügen'}
           icon={<AddIcon />}
           width={350}
+          height={100}
           onClick={() => {
-            setSubsite('hinzufügen')
+            setAction('hinzufügen')
           }}
         />
-      ) : null}
+      )}
+      {locations &&
+        locations.map((location: any) => (
+          <Card
+            key={location.name}
+            content={
+              <ContentCard
+                title={`Location: ${location.name}`}
+                type="location"
+                onEdit={() => {
+                  setAction('editieren')
+                  setLocationID(locations.indexOf(location))
+                }}
+                onDelete={() => {
+                  deleteLocation(location)
+                }}
+                content={location}
+              />
+            }></Card>
+        ))}
 
       {/* <SubSite site={subsite} /> */}
     </React.Fragment>
   )
 }
-
-// const SubSite = ({site}: {site: string}) => {
-//   switch (site) {
-//     case 'hinzufügen':
-//       return <NewLocation />
-//     default:
-//       return null
-//   }
-// }
 
 export default LocationView

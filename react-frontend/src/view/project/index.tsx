@@ -21,7 +21,6 @@ const project = {
 const ProjectView = (props: any) => {
   const [subsite, setSubsite]: [string, any] = React.useState('Dashboard')
   const [projects, setProjects] = React.useState(project)
-  console.log(subsite)
   return (
     <React.Fragment>
       <SiteNavigation

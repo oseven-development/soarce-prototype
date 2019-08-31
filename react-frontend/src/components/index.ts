@@ -12,6 +12,8 @@ import Navigation from './baseModule/navigation/main'
 import SiteNavigation from './baseModule/navigation/side'
 import Drawer from './baseModule/drawer/index'
 import SiteContainer from './baseModule/container'
+import CForm from './formModule/form'
+import ContentCard from './customModule/contentCard'
 export {
   FabButton,
   Drawer,
@@ -25,4 +27,6 @@ export {
   Snackbar,
   NormalButton,
   Bigbutton,
+  CForm,
+  ContentCard,
 }

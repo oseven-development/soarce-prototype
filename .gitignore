@@ -35,4 +35,5 @@ node_modules/
 aws-exports.js
 awsconfiguration.json
 .env.prod
+.env
 endpoint.js

@@ -32,7 +32,7 @@ export const Form = (props: any) => {
           ))
         : null}
       <Button type="submit" fullWidth variant="contained" color="primary" disabled={!isValid}>
-        Submit
+        erstellen
       </Button>
     </form>
   )

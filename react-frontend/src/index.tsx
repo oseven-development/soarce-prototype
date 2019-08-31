@@ -6,6 +6,8 @@ import './index.css'
 import App from './App'
 require('dotenv').config()
 
+console.log(process.env)
+
 // process.env.REACT_APP_GA_ID ? GA.init(process.env.REACT_APP_GA_ID) : console.error('GA Tracking ID not provided')
 ReactDOM.render(<App />, document.getElementById('root'))
 

@@ -9,13 +9,14 @@ import {Divider} from '@material-ui/core'
 const styles = {
   card: {
     minWidth: 250,
-    minHeight: 150,
+    minHeight: 100,
     borderRadius: 10,
     padding: 5,
   },
 }
+
 const _Card = (props: any) => {
-  const {classes, content, my, mx, alignItems, justifyContent, width, footContent, transform} = props
+  const {classes, content, my, mx, alignItems, justifyContent, width, footContent, transform, height} = props
   return (
     <Box mx={mx ? mx : 10} my={window.innerWidth < 768 ? 2 : my ? my : 20}>
       <Card
@@ -28,6 +29,7 @@ const _Card = (props: any) => {
           padding: 15,
           width,
           transform,
+          height,
         }}>
         {content}
         {footContent ? (

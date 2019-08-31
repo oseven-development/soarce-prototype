@@ -109,7 +109,6 @@ const StepperForm = (props: any) => {
 
       <form
         onSubmit={(e: any) => {
-          console.log(e)
           e.preventDefault()
           e.stopPropagation()
           handleSubmit()
@@ -134,28 +133,28 @@ const StepperForm = (props: any) => {
           {activeStep === stepperValues.length - 1 ? (
             <React.Fragment>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Back
+                Zurück
               </Button>
               <Button onClick={handleReset} color={'secondary'} className={classes.button}>
                 Reset
               </Button>
               <Button type="submit" variant="contained" color="primary" disabled={!isValid}>
-                Submit
+                Erstellen
               </Button>
             </React.Fragment>
           ) : (
             <React.Fragment>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Back
+                Zurück
               </Button>
               {isStepOptional(activeStep) && (
                 <Button variant="contained" color="primary" onClick={handleSkip} className={classes.button}>
-                  Skip
+                  Überspringen
                 </Button>
               )}
 
               <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-                {activeStep === stepperValues.length - 1 ? 'Submit' : 'Next'}
+                {activeStep === stepperValues.length - 1 ? 'Erstellen' : 'Weiter'}
               </Button>
             </React.Fragment>
           )}

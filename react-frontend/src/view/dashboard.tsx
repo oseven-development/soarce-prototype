@@ -14,7 +14,6 @@ const DashboardView = (props: any) => {
       <button
         onClick={async () => {
           const newPromoter = await API.graphql(graphqlOperation(mutations.createPromoter, {input: input}))
-          console.log(newPromoter)
         }}>
         create Promoter
       </button>
@@ -22,7 +21,6 @@ const DashboardView = (props: any) => {
       <button
         onClick={async () => {
           const allTodos = await API.graphql(graphqlOperation(queries.listPromoters))
-          console.log(allTodos)
         }}>
         get Promoter
       </button>

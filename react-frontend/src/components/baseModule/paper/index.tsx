@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
-    width: '100%',
     maxWidth: 900,
     borderRadius: 20,
     display: 'flex',
