@@ -1,5 +1,24 @@
-type Todo @model {
+# @format
+
+type Project @model {
   id: ID!
   name: String!
   description: String
+  startDate: String!
+  endDate: String!
+  state: String
+  promoter: [Promoter]! @connection
+  location: Location! @connection
+}
+
+type Promoter @model {
+  id: ID!
+  name: String!
+  email: String!
+  phoneNumber: String!
+}
+type Location @model {
+  id: ID!
+  name: String!
+  city: String!
 }
