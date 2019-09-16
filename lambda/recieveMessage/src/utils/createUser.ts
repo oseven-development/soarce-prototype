@@ -1,11 +1,10 @@
 /** @format */
 
-import {User} from '../models/user'
+import {User} from '../models/project'
 import {mapper} from '../service/database'
 
 export const createUser = (args: User) => {
   const toSave = Object.assign(new User(), args)
-  console.log(toSave)
   return mapper
     .put(toSave)
     .then(objectSaved => {

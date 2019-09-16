@@ -1,0 +1,21 @@
+{
+  "name": "aws-cognito-set-group",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "twilio": "^3.34.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.10.4",
+    "serverless-plugin-typescript": "^1.1.5",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
+  }
+}

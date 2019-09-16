@@ -2,13 +2,13 @@
 
 'use strict'
 
-import { User } from './models/user'
+import {User} from './models/project'
 import * as AWS from 'aws-sdk'
-import { createUser } from './utils/createUser'
+import {createUser} from './utils/createUser'
 
 const CognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider({
   apiVersion: '2016-04-18',
-  region: 'eu-central-1'
+  region: 'eu-central-1',
 })
 
 module.exports.addRole = async (event, context, callback) => {
@@ -20,7 +20,7 @@ module.exports.addRole = async (event, context, callback) => {
     email: event.request.userAttributes.email,
     category: event.request.category,
     activities: event.request.activities,
-    organization: event.request.userAttributes['custom:organization']
+    organization: event.request.userAttributes['custom:organization'],
   }
   console.log(user)
   //! Adds user to Group
