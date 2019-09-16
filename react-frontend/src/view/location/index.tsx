@@ -71,7 +71,7 @@ const LocationView = (props: any) => {
           text={'Location hinzufügen'}
           icon={<AddIcon />}
           width={350}
-          height={100}
+          height={160}
           onClick={() => {
             setAction('hinzufügen')
           }}

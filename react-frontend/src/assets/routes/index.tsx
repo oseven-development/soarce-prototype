@@ -2,11 +2,12 @@
 
 import React from 'react'
 
-import {DashboardView, ProjectView, CalendarView, LocationView} from '../../view'
+import {DashboardView, ProjectView, CalendarView, LocationView, PromoterView} from '../../view'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import ProjectIcon from '@material-ui/icons/EventNote'
 import CalendarIcon from '@material-ui/icons/CalendarToday'
 import LocationIcon from '@material-ui/icons/Business'
+import PromoterIcon from '@material-ui/icons/AccessibilityNew'
 
 export interface IRoute {
   path: string
@@ -55,6 +56,15 @@ const routes: IRoute[] = [
     position: 3,
     bottomNavigation: true,
     icon: <LocationIcon />,
+  },
+  {
+    path: '/promoter',
+    component: PromoterView,
+    groups: '',
+    displayName: 'Promoter',
+    position: 3,
+    bottomNavigation: true,
+    icon: <PromoterIcon />,
   },
 ]
 

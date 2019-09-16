@@ -14,8 +14,11 @@ body {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-a {
+a,
+a:-webkit-any-link,
+a:any-link {
   text-decoration: none;
+  color: inherit;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

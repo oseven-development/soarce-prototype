@@ -11,6 +11,8 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import BudgetIcon from '@material-ui/icons/AttachMoney'
 import StateIcon from '@material-ui/icons/CheckBox'
 import PromoterIcon from '@material-ui/icons/SupervisorAccount'
+import MailIcon from '@material-ui/icons/Mail'
+import PhoneIcon from '@material-ui/icons/Phone'
 import {getData} from '../../../api/custom/queries/get'
 import {getPromoter} from '../../../api/amplify/graphql/queries'
 
@@ -29,20 +31,15 @@ const ContentCard = (props: any) => {
 
   React.useEffect(() => {
     const LoadData = async () => {
-      const res = await getData(getPromoter, 'getPromoter', content.promoter[0]).then((res: any) => {
-        return res
-      })
-      setPromoter(res)
+      // const res = await getData(getPromoter, 'getPromoter', content.promoter[0]).then((res: any) => {
+      //   return res
+      // })
+      // setPromoter(res)
     }
     LoadData()
   }, [])
-  console.log(promoter)
   return (
-    <Flex
-      flexDirection={'column'}
-      justifyContent={'space-between'}
-      alignItems={'flex-start'}
-      style={{height: 100, width: '100%'}}>
+    <Flex flexDirection={'column'} justifyContent={'space-between'} alignItems={'flex-start'} style={{width: '100%'}}>
       {title ? (
         <Box m={'10px'} width={1}>
           <Typography variant="h1" color="primary">
@@ -73,6 +70,30 @@ const ContentCard = (props: any) => {
                     </Box>
                     <Box mx={'10px'}>
                       <Typography> {content.city}</Typography>
+                    </Box>
+                  </Flex>
+                </Box>
+              </Flex>
+            ) : null}
+            {type === 'promoter' ? (
+              <Flex flexDirection={'column'} justifyContent={'center'} alignItems={'flex-start'}>
+                <Box>
+                  <Flex justifyContent={'center'} alignItems={'flex-start'}>
+                    <Box mx={'10px'} style={{display: 'flex', justifyContent: 'center'}}>
+                      <MailIcon />
+                    </Box>
+                    <Box mx={'10px'}>
+                      <Typography> {content.email}</Typography>
+                    </Box>
+                  </Flex>
+                </Box>
+                <Box>
+                  <Flex justifyContent={'center'} alignItems={'flex-start'}>
+                    <Box mx={'10px'}>
+                      <PhoneIcon />
+                    </Box>
+                    <Box mx={'10px'}>
+                      <Typography> {content.phoneNumber}</Typography>
                     </Box>
                   </Flex>
                 </Box>
