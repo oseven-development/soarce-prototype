@@ -85,11 +85,11 @@ const App: React.FC = () => {
             })}
           </SiteContainer>
         </Router>
-        <FabButton
+        {/* <FabButton
           addButton
           onClick={() => {
             alert('hi')
-          }}></FabButton>
+          }}></FabButton> */}
         <Snackbar />
       </SnackProvider>
     </MuiThemeProvider>

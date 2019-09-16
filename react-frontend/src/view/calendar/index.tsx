@@ -1,19 +1,66 @@
 /** @format */
 
 import React from 'react'
-import {Scheduler, DayView, WeekView, Appointments, MonthView} from '@devexpress/dx-react-scheduler-material-ui'
+import {
+  Scheduler,
+  DayView,
+  WeekView,
+  Appointments,
+  MonthView,
+  AppointmentTooltip,
+  AppointmentForm,
+} from '@devexpress/dx-react-scheduler-material-ui'
+import {ButtonGroup, Button, Paper} from '@material-ui/core'
+import {ContentCard} from '../../components'
 
 const CalendarView = (props: any) => {
+  const {data} = props
+  const [view, setView] = React.useState('month')
   return (
     <React.Fragment>
-      <Scheduler
-        data={[
-          {startDate: '2019-08-31 10:00', endDate: '2019-08-31 11:00', title: 'Meeting'},
-          {startDate: '2019-09-01 18:00', endDate: '2019-09-01 19:30', title: 'Go to a gym'},
-        ]}>
-        <WeekView />
-        <Appointments />
-      </Scheduler>
+      <div style={{maxWidth: 1200}}>
+        <ButtonGroup variant="contained" color={'secondary'}>
+          <Button
+            onClick={() => {
+              setView('day')
+            }}>
+            Tages-Ansicht
+          </Button>
+          <Button
+            onClick={() => {
+              setView('week')
+            }}>
+            Wochen-Ansicht
+          </Button>
+          <Button
+            onClick={() => {
+              setView('month')
+            }}>
+            Monats-Ansicht
+          </Button>
+        </ButtonGroup>
+        <Paper>
+          <Scheduler
+            data={
+              data.projects
+                ? data.projects.map((project: any) => {
+                    return {
+                      startDate: project.startDate,
+                      endDate: project.endDate,
+                      title: project.name,
+                      promoter: project.promoter,
+                      description: project.description,
+                    }
+                  })
+                : []
+            }>
+            {view === 'day' ? <DayView /> : view === 'week' ? <WeekView /> : <MonthView />}
+
+            <Appointments />
+            <AppointmentTooltip showCloseButton showOpenButton />
+          </Scheduler>
+        </Paper>
+      </div>
     </React.Fragment>
   )
 }
