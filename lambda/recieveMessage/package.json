@@ -4,7 +4,8 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "sls offline"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,8 @@
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "amazon-cognito-identity-js": "^3.0.7",
     "aws-amplify": "^1.1.19",
-    "aws-sdk": "^2.411.0"
+    "aws-sdk": "^2.411.0",
+    "serverless-offline": "^5.11.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.9",

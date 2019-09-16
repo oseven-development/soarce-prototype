@@ -1,6 +1,7 @@
 service: sorace-recieveMessage # NOTE: update this with your service name
 plugins:
   - serverless-plugin-typescript
+  - serverless-offline
 
 provider:
   name: aws
