@@ -168,10 +168,10 @@ const ContentCard = (props: any) => {
         </Flex>
       </Box>
       <Box>
-        <Fab aria-label="edit" onClick={onEdit} color={'default'} style={{margin: '5px 5px'}}>
+        <Fab aria-label="edit" onClick={onEdit} color={'default'} style={{margin: '5px 5px', boxShadow: 'none'}}>
           <EditIcon> </EditIcon>
         </Fab>
-        <Fab aria-label="delete" onClick={onDelete} color={'secondary'} style={{margin: '5px 5px'}}>
+        <Fab aria-label="delete" onClick={onDelete} color={'secondary'} style={{margin: '5px 5px', boxShadow: 'none'}}>
           <DeleteIcon />
         </Fab>
       </Box>

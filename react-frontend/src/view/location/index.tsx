@@ -70,8 +70,8 @@ const LocationView = (props: any) => {
         <Bigbutton
           text={'Location hinzufügen'}
           icon={<AddIcon />}
-          width={350}
-          height={160}
+          width={window.innerWidth < 640 ? '100%' : 350}
+          height={window.innerWidth < 640 ? '100%' : 160}
           onClick={() => {
             setAction('hinzufügen')
           }}

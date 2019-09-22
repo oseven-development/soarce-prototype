@@ -21,3 +21,7 @@ functions:
   addRole:
     handler: src/handler.recieveMessage
     memorySize: 128
+    events:
+      - http:
+          path: get
+          method: get

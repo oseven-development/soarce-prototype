@@ -15,6 +15,10 @@ provider:
         - logs:*
       Resource: "*"
 functions:
-  addRole:
+  sendMessage:
     handler: src/handler.sendMessage
     memorySize: 128
+    events:
+      - http:
+          path: get
+          method: get

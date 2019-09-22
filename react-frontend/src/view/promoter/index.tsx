@@ -72,8 +72,8 @@ const PromoterView = (props: any) => {
         <Bigbutton
           text={'promoter hinzufügen'}
           icon={<AddIcon />}
-          width={350}
-          height={160}
+          width={window.innerWidth < 640 ? '100%' : 350}
+          height={window.innerWidth < 640 ? '100%' : 160}
           onClick={() => {
             setAction('hinzufügen')
           }}

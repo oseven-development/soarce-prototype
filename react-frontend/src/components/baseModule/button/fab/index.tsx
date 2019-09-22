@@ -32,7 +32,7 @@ const FabButton = (props: IFabProps) => {
         aria-label="add"
         onClick={onClick}
         className={classes.fab}
-        style={addButton ? {position: 'absolute', bottom: 70, right: 15} : {}}>
+        style={addButton ? {position: 'absolute', bottom: 70, right: 15} : {boxShadow: 'none'}}>
         {icon ? icon : <AddIcon />}
       </Fab>
     </React.Fragment>

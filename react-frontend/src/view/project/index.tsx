@@ -80,8 +80,8 @@ const ProjectView = (props: any) => {
         <Bigbutton
           text={'Projekt hinzufügen'}
           icon={<AddIcon />}
-          width={350}
-          height={240}
+          width={window.innerWidth < 640 ? '100%' : 350}
+          height={window.innerWidth < 640 ? '100%' : 240}
           onClick={() => {
             setAction('hinzufügen')
           }}

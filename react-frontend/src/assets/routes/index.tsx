@@ -23,12 +23,12 @@ export interface IRoute {
 const routes: IRoute[] = [
   {
     path: '/',
-    component: DashboardView,
+    component: CalendarView,
     groups: '',
-    displayName: 'Dashboard',
+    displayName: 'Kalendar',
     position: 1,
     bottomNavigation: true,
-    icon: <DashboardIcon />,
+    icon: <CalendarIcon />,
   },
   {
     path: '/project',
@@ -39,15 +39,15 @@ const routes: IRoute[] = [
     bottomNavigation: true,
     icon: <ProjectIcon />,
   },
-  {
-    path: '/calendar',
-    component: CalendarView,
-    groups: '',
-    displayName: 'Kalender',
-    position: 3,
-    bottomNavigation: true,
-    icon: <CalendarIcon />,
-  },
+  // {
+  //   path: '/calendar',
+  //   component: CalendarView,
+  //   groups: '',
+  //   displayName: 'Kalender',
+  //   position: 3,
+  //   bottomNavigation: true,
+  //   icon: <CalendarIcon />,
+  // },
   {
     path: '/location',
     component: LocationView,
